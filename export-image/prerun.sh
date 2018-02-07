@@ -59,9 +59,9 @@ for FEATURE in metadata_csum 64bit; do
 	fi
 done
 mkdosfs -n boot -F 32 -v $BOOT_DEV > /dev/null
-mkfs.ext4 -L rootfs -O $ROOT_FEATURES $ROOT_DEV > /dev/null
+mkfs.f2fs -L rootfs -O $ROOT_FEATURES $ROOT_DEV > /dev/null
 
-mount -v $ROOT_DEV ${ROOTFS_DIR} -t ext4
+mount -v $ROOT_DEV ${ROOTFS_DIR} -t f2fs
 mkdir -p ${ROOTFS_DIR}/boot
 mount -v $BOOT_DEV ${ROOTFS_DIR}/boot -t vfat
 
